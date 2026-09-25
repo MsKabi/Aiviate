@@ -138,7 +138,7 @@ function FitBounds({ bounds }) {
   return null;
 }
 
-export default function MapView() {
+export default function RouteMapPage() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");

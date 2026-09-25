@@ -250,15 +250,18 @@ In development, two workflows run in parallel:
 │   ├── contexts/
 │   │   └── AuthContext.jsx       # Authentication state management
 │   ├── pages/
-│   │   ├── Dashboard.jsx         # Stats overview
-│   │   ├── DispatchCenter.jsx    # Upload/optimize/assign workflow
-│   │   ├── Jobs.jsx              # Job list and management
-│   │   ├── Drivers.jsx           # Driver list + detail panel
-│   │   ├── MapView.jsx           # Interactive map with routes
-│   │   ├── MyJobs.jsx            # Driver's assigned jobs
-│   │   ├── Login.jsx             # Login form
-│   │   ├── Register.jsx          # Registration form
-│   │   └── Profile.jsx           # User profile
+│   │   ├── OperationsPages.jsx           # Main operations, planning, policy, and activity pages
+│   │   ├── RoutesJobsPage.jsx            # Jobs and dispatch tabs
+│   │   ├── DispatchWorkflow.jsx          # Upload, optimise, and assign workflow
+│   │   ├── RouteMapPage.jsx              # Interactive map with routes
+│   │   ├── Fleet.jsx                     # Drivers, devices, and safety tabs
+│   │   ├── SafetyPanel.jsx               # Safety overview embedded in Fleet
+│   │   ├── DataSourcesSettingsPage.jsx   # Settings data-source connection page
+│   │   ├── LiveOperationsPage.jsx        # Live operations feed
+│   │   ├── MyJobs.jsx                    # Driver's assigned jobs
+│   │   ├── Login.jsx                     # Login form
+│   │   ├── Register.jsx                  # Registration form
+│   │   └── Profile.jsx                   # User profile
 │   ├── services/
 │   │   └── api.js                # API client (fetch wrapper)
 │   ├── App.jsx                   # Router configuration

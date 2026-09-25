@@ -1,14 +1,14 @@
 import { useSearchParams } from "react-router-dom";
 import { ClipboardList, Upload } from "lucide-react";
 import Jobs from "./Jobs";
-import DispatchCenter from "./DispatchCenter";
+import DispatchWorkflow from "./DispatchWorkflow";
 
 const TABS = [
   { id: "jobs", label: "Jobs", icon: ClipboardList },
   { id: "dispatch", label: "Upload & Optimize", icon: Upload },
 ];
 
-export default function JobsCenter() {
+export default function RoutesJobsPage() {
   const [params, setParams] = useSearchParams();
   const active = TABS.some((t) => t.id === params.get("tab")) ? params.get("tab") : "jobs";
 
@@ -41,7 +41,7 @@ export default function JobsCenter() {
       </div>
 
       {active === "jobs" && <Jobs embedded />}
-      {active === "dispatch" && <DispatchCenter embedded />}
+      {active === "dispatch" && <DispatchWorkflow embedded />}
     </div>
   );
 }

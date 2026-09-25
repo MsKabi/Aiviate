@@ -12,7 +12,7 @@ function storeStopsOnly(list = []) {
   return list.filter((s) => String(s.order_id || "").startsWith("STORE-"));
 }
 
-export default function DispatchCenter({ embedded = false }) {
+export default function DispatchWorkflow({ embedded = false }) {
   const [step, setStep] = useState("upload");
   const [uploading, setUploading] = useState(false);
   const [optimizing, setOptimizing] = useState(false);

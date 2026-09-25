@@ -3,18 +3,18 @@ import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import DriverLayout from "./components/DriverLayout";
-import JobsCenter from "./pages/JobsCenter";
+import RoutesJobsPage from "./pages/RoutesJobsPage";
 import Fleet from "./pages/Fleet";
-import MapView from "./pages/MapView";
+import RouteMapPage from "./pages/RouteMapPage";
 import MyJobs from "./pages/MyJobs";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
-import LiveOps from "./pages/LiveOps";
+import LiveOperationsPage from "./pages/LiveOperationsPage";
 import Alerts from "./pages/Alerts";
 import Settings from "./pages/Settings";
-import DataSources from "./pages/DataSources";
+import DataSourcesSettingsPage from "./pages/DataSourcesSettingsPage";
 import Orders from "./pages/Orders";
 import Integrations from "./pages/Integrations";
 import PublicTracking from "./pages/PublicTracking";
@@ -29,7 +29,7 @@ import {
   Planning,
   PoliciesAutonomy,
   Vehicles,
-} from "./pages/OperationsModel";
+} from "./pages/OperationsPages";
 
 function AppRoutes() {
   const { user } = useAuth();
@@ -49,12 +49,12 @@ function AppRoutes() {
         ) : (
           <>
             <Route path="/" element={<OperationsCommand />} />
-            <Route path="/map" element={<MapView />} />
+            <Route path="/map" element={<RouteMapPage />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/planning" element={<Planning />} />
             <Route path="/exceptions" element={<Exceptions />} />
             <Route path="/approvals" element={<Approvals />} />
-            <Route path="/routes" element={<JobsCenter />} />
+            <Route path="/routes" element={<RoutesJobsPage />} />
             <Route path="/drivers" element={<Fleet />} />
             <Route path="/vehicles" element={<Vehicles />} />
             <Route path="/customers" element={<Customers />} />
@@ -62,10 +62,10 @@ function AppRoutes() {
             <Route path="/activity" element={<AiviateActivity />} />
             <Route path="/policies" element={<PoliciesAutonomy />} />
             <Route path="/integrations" element={<Integrations />} />
-            <Route path="/jobs" element={<JobsCenter />} />
+            <Route path="/jobs" element={<RoutesJobsPage />} />
             <Route path="/fleet" element={<Fleet />} />
             <Route path="/settings" element={<Settings />} />
-            <Route path="/settings/data-sources" element={<DataSources />} />
+            <Route path="/settings/data-sources" element={<DataSourcesSettingsPage />} />
             <Route path="/profile" element={<Profile />} />
             {/* Legacy URLs kept for back-compat. */}
             <Route path="/ai-planner" element={<Navigate to="/" replace />} />
@@ -73,7 +73,7 @@ function AppRoutes() {
             <Route path="/dispatch" element={<Navigate to="/jobs?tab=dispatch" replace />} />
             <Route path="/devices" element={<Navigate to="/fleet?tab=devices" replace />} />
             <Route path="/safety" element={<Navigate to="/fleet?tab=safety" replace />} />
-            <Route path="/live" element={<LiveOps />} />
+            <Route path="/live" element={<LiveOperationsPage />} />
             <Route path="/intelligence" element={<Intelligence />} />
             <Route path="/legacy-intelligence" element={<Alerts />} />
             <Route path="/guardians" element={<Navigate to="/" replace />} />

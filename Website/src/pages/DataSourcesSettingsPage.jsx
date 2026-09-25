@@ -37,7 +37,7 @@ function fmtDate(iso) {
 }
 
 /* ────────────────────────── page ─────────────────────────── */
-export default function DataSources() {
+export default function DataSourcesSettingsPage() {
   const [sources, setSources] = useState(() => loadSources());
   const [picker, setPicker] = useState(null); // 'api' | 'csv' | 'folder' | null
   const [toast, setToast] = useState(null);

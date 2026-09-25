@@ -340,7 +340,7 @@ export async function getStats() {
   return handleResponse(res);
 }
 
-export async function getLiveOps() {
+export async function getLiveOperations() {
   const res = await fetch(`${API_BASE}/live-ops`, { headers: getAuthHeaders() });
   return handleResponse(res);
 }

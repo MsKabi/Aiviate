@@ -52,7 +52,7 @@ function tier(score) {
   return { label: "At risk", color: "#343A40" };
 }
 
-export default function SafetyCenter({ embedded = false }) {
+export default function SafetyPanel({ embedded = false }) {
   const [overview, setOverview] = useState(null);
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);

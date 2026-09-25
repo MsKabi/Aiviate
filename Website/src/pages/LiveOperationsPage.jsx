@@ -14,7 +14,7 @@ import {
   Wifi,
   Battery,
 } from "lucide-react";
-import { getLiveOps } from "../services/api";
+import { getLiveOperations } from "../services/api";
 
 const ALERT_ICONS = {
   fatigue: Eye,
@@ -52,7 +52,7 @@ function timeAgo(iso) {
   return `${Math.floor(m / 60)}h ago`;
 }
 
-export default function LiveOps() {
+export default function LiveOperationsPage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState(null);
@@ -61,7 +61,7 @@ export default function LiveOps() {
     let cancelled = false;
     const load = async () => {
       try {
-        const d = await getLiveOps();
+        const d = await getLiveOperations();
         if (!cancelled) {
           setData(d);
           setLoading(false);

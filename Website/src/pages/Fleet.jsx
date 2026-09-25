@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import { Users, Smartphone, ShieldCheck } from "lucide-react";
 import Drivers from "./Drivers";
 import Devices from "./Devices";
-import SafetyCenter from "./SafetyCenter";
+import SafetyPanel from "./SafetyPanel";
 
 const TABS = [
   { id: "drivers", label: "Drivers", icon: Users },
@@ -44,7 +44,7 @@ export default function Fleet() {
 
       {active === "drivers" && <Drivers embedded />}
       {active === "devices" && <Devices embedded />}
-      {active === "safety" && <SafetyCenter embedded />}
+      {active === "safety" && <SafetyPanel embedded />}
     </div>
   );
 }
