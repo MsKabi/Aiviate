@@ -4,6 +4,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import Sidebar from "./Sidebar";
 import { ArrowUpRight, X } from "lucide-react";
 import { setPendingAsk } from "../lib/askBus";
+import { useSpeechToText } from "../lib/useSpeechToText";
+import { DictationButtons, DictationNotice } from "./DictationControls";
 import { useAuth } from "../contexts/AuthContext";
 import Integrations from "../pages/Integrations";
 import Settings from "../pages/Settings";
@@ -57,6 +59,7 @@ export default function Layout() {
   const { user } = useAuth();
   const isHome = location.pathname === "/";
   const [topText, setTopText] = useState("");
+  const topDictation = useSpeechToText({ value: topText, onChange: setTopText });
   const [profilePanel, setProfilePanel] = useState(null);
   const [themeMode, setThemeMode] = useState(() => {
     try { return localStorage.getItem("aiviate_theme_mode") || "dark"; }
@@ -185,8 +188,9 @@ export default function Layout() {
                     onChange={(e) => setTopText(e.target.value)}
                     placeholder='Ask Aiviate anything, like "show me today\u2019s routes"'
                     aria-label="Ask Aiviate"
-                    className="flex-1 bg-transparent outline-none text-[13px] text-[#111315] placeholder:text-[#868E96]"
+                    className="min-w-0 flex-1 bg-transparent outline-none text-[13px] text-[#111315] placeholder:text-[#868E96]"
                   />
+                  <DictationButtons dictation={topDictation} size="sm" />
                   {topText.trim() ? (
                     <motion.button
                       type="submit"
@@ -201,6 +205,7 @@ export default function Layout() {
                     <span className="text-[10px] font-mono text-[#ADB5BD] border border-black/[0.08] rounded px-1.5 py-0.5 shrink-0">⌘K</span>
                   )}
                 </motion.div>
+                <DictationNotice dictation={topDictation} className="mt-2 px-1" />
               </form>
             </div>
           </div>
