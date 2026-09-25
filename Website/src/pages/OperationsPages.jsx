@@ -11,7 +11,7 @@ import {
   ClipboardCheck,
   Headphones,
   Mail,
-  Map,
+  Map as MapIcon,
   Mic,
   MicOff,
   Package,
@@ -70,7 +70,7 @@ const ICONS = {
   customers: Users,
   communications: Mail,
   activity: Activity,
-  intelligence: Map,
+  intelligence: MapIcon,
   policies: ShieldCheck,
 };
 
@@ -390,9 +390,9 @@ function ChatComposer({ value, onChange, onSubmit, busy, inputRef, onVoice, assi
               onClick={onVoice}
               className="mb-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#F1F3F5] text-[#111315] transition-colors hover:bg-[#E9ECEF]"
               aria-label="Start voice mode"
-              title="Voice mode"
+              title="Voice mode (talk with read-aloud replies)"
             >
-              <Mic size={16} strokeWidth={1.6} />
+              <Headphones size={16} strokeWidth={1.6} />
             </button>
           )}
           <textarea
