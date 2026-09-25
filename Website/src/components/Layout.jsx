@@ -60,6 +60,15 @@ export default function Layout() {
   const isHome = location.pathname === "/";
   const [topText, setTopText] = useState("");
   const topDictation = useSpeechToText({ value: topText, onChange: setTopText });
+  const [isNarrow, setIsNarrow] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(max-width: 639px)").matches,
+  );
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 639px)");
+    const update = () => setIsNarrow(query.matches);
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
   const [profilePanel, setProfilePanel] = useState(null);
   const [themeMode, setThemeMode] = useState(() => {
     try { return localStorage.getItem("aiviate_theme_mode") || "dark"; }
@@ -174,7 +183,7 @@ export default function Layout() {
             because Home has its own centered hero prompt. */}
         {!isHome && (
           <div className="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-black/[0.06]">
-            <div className="max-w-[960px] mx-auto px-5 sm:px-8 lg:px-12 py-3">
+            <div className="max-w-[960px] mx-auto px-5 sm:px-8 lg:px-12 max-lg:pl-16 py-3">
               <form onSubmit={submitTop}>
                 <motion.div
                   layoutId="ask-aiviate-prompt"
@@ -186,7 +195,7 @@ export default function Layout() {
                     ref={topInputRef}
                     value={topText}
                     onChange={(e) => setTopText(e.target.value)}
-                    placeholder='Ask Aiviate anything, like "show me today\u2019s routes"'
+                    placeholder={isNarrow ? "Ask Aiviate..." : "Ask Aiviate anything, like \u201cshow me today\u2019s routes\u201d"}
                     aria-label="Ask Aiviate"
                     className="min-w-0 flex-1 bg-transparent outline-none text-[13px] text-[#111315] placeholder:text-[#868E96]"
                   />
@@ -202,7 +211,7 @@ export default function Layout() {
                       <ArrowUpRight size={13} strokeWidth={1.6} />
                     </motion.button>
                   ) : (
-                    <span className="text-[10px] font-mono text-[#ADB5BD] border border-black/[0.08] rounded px-1.5 py-0.5 shrink-0">⌘K</span>
+                    <span className="hidden sm:inline text-[10px] font-mono text-[#ADB5BD] border border-black/[0.08] rounded px-1.5 py-0.5 shrink-0">⌘K</span>
                   )}
                 </motion.div>
                 <DictationNotice dictation={topDictation} className="mt-2 px-1" />
